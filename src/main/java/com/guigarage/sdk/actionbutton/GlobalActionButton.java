@@ -21,7 +21,7 @@ public class GlobalActionButton extends HBox {
 
     private Map<Action, Node> itemToNode;
 
-    private Ellipse ellipse;
+    //private Ellipse ellipse;
 
 
     public GlobalActionButton() {

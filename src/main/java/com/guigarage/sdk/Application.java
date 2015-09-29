@@ -12,6 +12,7 @@ import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -22,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.Optional;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -55,6 +57,7 @@ public class Application extends VBox {
     private Condition javaFXStarterCondition;
 
     private GlobalActionButton globalActionButton;
+
 
     public Application() {
         stage = new SimpleObjectProperty<>();
@@ -95,14 +98,19 @@ public class Application extends VBox {
     }
 
     private void initApplication() {
-        baseColor = new SimpleObjectProperty();
+        baseColor = new SimpleObjectProperty<>();
         stylesheets = FXCollections.observableArrayList();
+        stylesheets.addListener((ListChangeListener.Change<? extends String> c) ->{
+            Scene myScene = scene.get();
+            myScene.getStylesheets().clear();
+            myScene.getStylesheets().addAll(stylesheets);
+        });
 
         workbench = new Workbench();
         menuSlider = new SliderPane();
         menuSlider.setPinned(false);
         menuPane = new MenuPane();
-        menuPane.setGlobalActionCallback(() -> menuSlider.hidePopover());
+        menuPane.setGlobalActionCallback(menuSlider::hidePopover);
         menuSlider.setPopover(menuPane);
         menuSlider.setContent(workbench);
 
@@ -235,8 +243,10 @@ public class Application extends VBox {
         Runnable r = () -> {
             Scene myScene = new Scene(this);
             scene.setValue(myScene);
-            myScene.getStylesheets().add(ApplicationStarter.class.getResource("fonts.css").toExternalForm());
-            myScene.getStylesheets().add(ApplicationStarter.class.getResource("default-style.css").toExternalForm());
+            addStylesheet(ApplicationStarter.class.getResource("fonts.css").toExternalForm());
+            addStylesheet(ApplicationStarter.class.getResource("default-style.css").toExternalForm());
+            //myScene.getStylesheets().add(ApplicationStarter.class.getResource("fonts.css").toExternalForm());
+            //myScene.getStylesheets().add(ApplicationStarter.class.getResource("default-style.css").toExternalForm());
             stage.get().setScene(scene.get());
             stage.get().show();
         };
@@ -261,5 +271,9 @@ public class Application extends VBox {
 
     public Image getToolbarBackgroundImage() {
         return toolbar.getBackgroundImage();
+    }
+
+    public ObjectProperty<Stage> stageProperty() {
+        return stage;
     }
 }

@@ -37,26 +37,26 @@
     -fx-fill: white;
 }
 
-.toogle-button {
+.toggle-button {
   -fx-border-color: null;
   -fx-background-color: -fx-lightest-color;
   -fx-background-radius: 2px;
   -fx-font-size: 14px;
 }
 
-.toogle-button .text{
+.toggle-button .text{
     -fx-fill: white;
 }
 
-.toogle-button:hover {
+.toggle-button:hover {
     -fx-background-color: -fx-basic-color;
 }
 
-.toogle-button:hover .text{
+.toggle-button:hover .text{
     -fx-fill: white;
 }
 
-.toogle-button:selected {
+.toggle-button:selected {
   -fx-background-color: -fx-darkest-color;
 }
 

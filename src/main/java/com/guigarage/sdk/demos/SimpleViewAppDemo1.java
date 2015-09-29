@@ -26,8 +26,8 @@ public class SimpleViewAppDemo1 {
         Application app = new Application();
         app.setTitle("MyApp");
         app.setBaseColor(Color.DARKORCHID);
-        app.addToolbarItem(new Action(FontAwesomeIcons.VOLUMNE_DOWN, () -> app.animateToolbarToLargeVersion()));
-        app.addToolbarItem(new Action(FontAwesomeIcons.VOLUMNE_UP, () -> app.animateToolbarToSmallVersion()));
+        app.addToolbarItem(new Action(FontAwesomeIcons.VOLUMNE_DOWN, app::animateToolbarToLargeVersion));
+        app.addToolbarItem(new Action(FontAwesomeIcons.VOLUMNE_UP, app::animateToolbarToSmallVersion));
 
         app.setToolbarBackgroundImage(SimpleViewAppDemo1.class.getResource("toolbar-background.png").toExternalForm());
 
