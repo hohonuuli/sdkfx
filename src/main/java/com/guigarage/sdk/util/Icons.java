@@ -3,7 +3,7 @@ package com.guigarage.sdk.util;
 /**
  * Created by hendrikebbers on 12.03.15.
  */
-public enum Icons implements Icon {
+public enum Icons implements FontBasedIcon {
     ANGLE_LEFT("\uf104"),
     ANGLE_RIGHT("\uf105"),
     CALENDAR("\uf073"),

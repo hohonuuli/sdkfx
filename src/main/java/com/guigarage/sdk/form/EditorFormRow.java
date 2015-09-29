@@ -21,7 +21,7 @@ public class EditorFormRow<T extends Node> implements FormRow {
     /**
      *
      * @param labelText The forms row label for this editor
-     * @param editor e.g. new TextField(), new TextArea(), new CheckBox(), new ListView<>()
+     * @param editor e.g. new TextField(), new TextArea(), new CheckBox(), new ListView()
      */
     public EditorFormRow(String labelText, T editor) {
         this.editor = editor;
