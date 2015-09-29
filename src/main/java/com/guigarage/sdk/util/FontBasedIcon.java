@@ -5,7 +5,7 @@ package com.guigarage.sdk.util;
  * @author Brian Schlining
  * @since 2015-07-19T15:32:00
  */
-public interface Icon {
+public interface FontBasedIcon {
 
     String getText();
 }

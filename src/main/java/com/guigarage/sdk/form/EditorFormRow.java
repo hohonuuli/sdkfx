@@ -46,7 +46,10 @@ public class EditorFormRow<T extends Node> implements FormRow {
         text.addListener(e -> label.setText(text.get() + ":"));
         label.setText(text.get() + ":");
         label.setTextAlignment(TextAlignment.RIGHT);
-        label.setAlignment(Pos.CENTER_RIGHT);
+        label.setAlignment(Pos.BASELINE_RIGHT);
+        if(editor instanceof TextArea) {
+            label.setAlignment(Pos.TOP_RIGHT);
+        }
         label.setLabelFor(editor);
         return label;
     }
@@ -59,12 +62,17 @@ public class EditorFormRow<T extends Node> implements FormRow {
     @Override
     public double layoutInParent(double startX, double startY, double width, double labelWidth, double rowSpacing, double columnSpacing) {
         if (label.isVisible()) {
-            label.relocate(startX, startY);
-            label.resize(labelWidth, label.prefHeight(labelWidth));
-
             double editorWidth = width - columnSpacing - labelWidth;
+
+            double labelHeight = label.prefHeight(labelWidth);
+            double editorHeight = editor.prefHeight(editorWidth);
+            double height = Math.max(labelHeight, editorHeight);
+
+            label.relocate(startX, startY);
+            label.resize(labelWidth, height);
+
             editor.relocate(label.getLayoutX() + label.getWidth() + columnSpacing, startY);
-            editor.resize(editorWidth, editor.prefHeight(editorWidth));
+            editor.resize(editorWidth, height);
 
             return startY + Math.max(label.getHeight(), editor.getLayoutBounds().getHeight()) + rowSpacing;
         } else {

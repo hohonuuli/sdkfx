@@ -232,15 +232,14 @@ public class Application extends VBox {
     }
 
     public void show() {
-      Runnable r = () -> {
-        Scene myScene = new Scene(this);
-        scene.setValue(myScene);
-        myScene.getStylesheets().add(ApplicationStarter.class.getResource("fonts.css").toExternalForm());
-        myScene.getStylesheets().add(ApplicationStarter.class.getResource("default-style.css").toExternalForm());
-        stage.get().setScene(scene.get());
-        stage.get().show();
-      };
-      
+        Runnable r = () -> {
+            Scene myScene = new Scene(this);
+            scene.setValue(myScene);
+            myScene.getStylesheets().add(ApplicationStarter.class.getResource("fonts.css").toExternalForm());
+            myScene.getStylesheets().add(ApplicationStarter.class.getResource("default-style.css").toExternalForm());
+            stage.get().setScene(scene.get());
+            stage.get().show();
+        };
         if (!Platform.isFxApplicationThread()) {
             Platform.runLater(r);
         } else {
@@ -258,5 +257,9 @@ public class Application extends VBox {
 
     public void setStopCallback(Callback stopCallback) {
         this.stopCallback.set(stopCallback);
+    }
+
+    public Image getToolbarBackgroundImage() {
+        return toolbar.getBackgroundImage();
     }
 }
