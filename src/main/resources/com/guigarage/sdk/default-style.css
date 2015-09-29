@@ -33,6 +33,29 @@
     -fx-fill: white;
 }
 
+.toogle-button {
+  -fx-border-color: null;
+  -fx-background-color: -fx-lightest-color;
+  -fx-background-radius: 2px;
+  -fx-font-size: 14px;
+}
+
+.toogle-button .text{
+    -fx-fill: white;
+}
+
+.toogle-button:hover {
+    -fx-background-color: -fx-basic-color;
+}
+
+.toogle-button:hover .text{
+    -fx-fill: white;
+}
+
+.toogle-button:selected {
+  -fx-background-color: -fx-darkest-color;
+}
+
 .base-toolbar {
     -fx-background-color: white;
 }
