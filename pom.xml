@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.guigarage</groupId>
     <artifactId>sdkfx</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2.1-SNAPSHOT</version>
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -17,7 +17,7 @@
     <distributionManagement>
         <repository>
             <id>bintray</id>
-            <url>https://api.bintray.com/maven/hohonuuli/maven/sdkfx</url>
+            <url>https://api.bintray.com/maven/hohonuuli/maven/sdkfx/;publish=1</url>
         </repository>
     </distributionManagement>
     <build>
