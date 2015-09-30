@@ -57,7 +57,7 @@
 }
 
 .toggle-button:selected {
-  -fx-background-color: -fx-darkest-color;
+  -fx-background-color: -fx-darker-color;
 }
 
 .base-toolbar {
