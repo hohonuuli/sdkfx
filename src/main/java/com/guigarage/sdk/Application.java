@@ -102,8 +102,10 @@ public class Application extends VBox {
         stylesheets = FXCollections.observableArrayList();
         stylesheets.addListener((ListChangeListener.Change<? extends String> c) ->{
             Scene myScene = scene.get();
-            myScene.getStylesheets().clear();
-            myScene.getStylesheets().addAll(stylesheets);
+            if (myScene != null) {
+                myScene.getStylesheets().clear();
+                myScene.getStylesheets().addAll(stylesheets);
+            }
         });
 
         workbench = new Workbench();
