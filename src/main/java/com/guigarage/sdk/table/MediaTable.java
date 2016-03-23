@@ -9,7 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 
-public class MediaTable extends TableView<Media> {
+public class MediaTable<T extends Media> extends TableView<T> {
 
     private StringProperty imageColumnHeaderText;
 
@@ -32,18 +32,18 @@ public class MediaTable extends TableView<Media> {
         titleColumnHeaderVisible = new SimpleBooleanProperty(true);
         descriptionColumnHeaderVisible = new SimpleBooleanProperty(true);
 
-        TableColumn<Media, Image> imageTableColumn = new TableColumn<>();
+        TableColumn<T, Image> imageTableColumn = new TableColumn<>();
         imageTableColumn.setCellValueFactory(c -> c.getValue().imageProperty());
         imageTableColumn.textProperty().bind(imageColumnHeaderText);
         imageTableColumn.visibleProperty().bind(imageColumnHeaderVisible);
         imageTableColumn.setCellFactory(c -> new ImageTableCell());
 
-        TableColumn<Media, String> titleTableColumn = new TableColumn<>();
+        TableColumn<T, String> titleTableColumn = new TableColumn<>();
         titleTableColumn.setCellValueFactory(c -> c.getValue().titleProperty());
         titleTableColumn.textProperty().bind(titleColumnHeaderText);
         titleTableColumn.visibleProperty().bind(titleColumnHeaderVisible);
 
-        TableColumn<Media, String> descriptionTableColumn = new TableColumn<>();
+        TableColumn<T, String> descriptionTableColumn = new TableColumn<>();
         descriptionTableColumn.setCellValueFactory(c -> c.getValue().descriptionProperty());
         descriptionTableColumn.textProperty().bind(descriptionColumnHeaderText);
         descriptionTableColumn.visibleProperty().bind(descriptionColumnHeaderVisible);

@@ -31,7 +31,7 @@ public class StructuredListCell<T> extends ListCell<T> {
         centerContent = new SimpleObjectProperty<>();
         rightContent = new SimpleObjectProperty<>();
 
-        addEventHandler(MouseEvent.MOUSE_CLICKED, e -> simpleSelect());
+        //addEventHandler(MouseEvent.MOUSE_CLICKED, e -> simpleSelect());
     }
 
     public Node getLeftContent() {
@@ -81,10 +81,10 @@ public class StructuredListCell<T> extends ListCell<T> {
     }
 
     private void simpleSelect() {
-        ListView lv = getListView();
-        int index = getIndex();
-        MultipleSelectionModel sm = lv.getSelectionModel();
-        lv.getSelectionModel().clearAndSelect(index);
+//        ListView lv = getListView();
+//        int index = getIndex();
+//        MultipleSelectionModel sm = lv.getSelectionModel();
+//        lv.getSelectionModel().clearAndSelect(index);
     }
 
     private static class StyleableProperties {

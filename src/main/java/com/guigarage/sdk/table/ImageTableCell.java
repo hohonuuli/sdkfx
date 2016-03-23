@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class ImageTableCell extends TableCell<Media, Image> {
+public class ImageTableCell<T extends Media> extends TableCell<T, Image> {
 
     private ImageView imageView;
 

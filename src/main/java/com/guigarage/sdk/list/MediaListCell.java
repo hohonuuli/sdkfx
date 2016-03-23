@@ -53,7 +53,7 @@ public class MediaListCell<T> extends StructuredListCell<T> {
         descriptionLabel.setTextOverrun(OverrunStyle.WORD_ELLIPSIS);
         descriptionLabel.getStyleClass().add("media-cell-description");
         descriptionLabel.textProperty().bind(description);
-        VBox.setVgrow(titleLabel, Priority.ALWAYS);
+        VBox.setVgrow(descriptionLabel, Priority.ALWAYS);
 
         centerBox.getChildren().addAll(titleLabel, descriptionLabel);
         setCenterContent(centerBox);
