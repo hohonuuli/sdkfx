@@ -1,7 +1,7 @@
 package com.guigarage.sdk.css;
 
-import com.sun.javafx.css.converters.EnumConverter;
 import javafx.css.*;
+import javafx.css.converter.EnumConverter;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -100,14 +100,23 @@ public class CssHelper {
     }
 
     public static <S extends Control, T extends VPos> SkinPropertyBasedCssMetaData<S, T> createSkinMetaDataForVPos(String property, String propertyName, T defaultValue) {
-        return new SkinPropertyBasedCssMetaData<S, T>(property, new EnumConverter(VPos.class), propertyName, defaultValue);
+        return new SkinPropertyBasedCssMetaData<S, T>(property,
+                (StyleConverter<?, T>) StyleConverter.getEnumConverter(VPos.class),
+                propertyName,
+                defaultValue);
     }
 
     public static <S extends Control, T extends HPos> SkinPropertyBasedCssMetaData<S, T> createSkinMetaDataForHPos(String property, String propertyName, T defaultValue) {
-        return new SkinPropertyBasedCssMetaData<S, T>(property, new EnumConverter(HPos.class), propertyName, defaultValue);
+        return new SkinPropertyBasedCssMetaData<S, T>(property,
+                (StyleConverter<?, T>) StyleConverter.getEnumConverter(HPos.class),
+                propertyName,
+                defaultValue);
     }
 
     public static <S extends Control, T extends Pos> SkinPropertyBasedCssMetaData<S, T> createSkinMetaDataForPos(String property, String propertyName, T defaultValue) {
-        return new SkinPropertyBasedCssMetaData<S, T>(property, new EnumConverter(Pos.class), propertyName, defaultValue);
+        return new SkinPropertyBasedCssMetaData<S, T>(property,
+                (StyleConverter<?, T>) StyleConverter.getEnumConverter(Pos.class),
+                propertyName,
+                defaultValue);
     }
 }
